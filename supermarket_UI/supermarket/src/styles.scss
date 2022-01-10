@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+$primary_backGround: #d4d4d4;
+$secondry_header: #ff797b;
+body {
+    overflow: hidden;
+    background-color: $primary_backGround !important;
+
+    span.label {
+        color: white;
+    }
+}
+
+.header {
+    background-color: $secondry_header;
+    padding: 1% 0;
+    .title {
+        display: flex;
+        margin-left: 5%;
+        img {
+            margin-right: 2%;
+        }
+
+        h1 {
+            color: white;
+            font-weight: bold;
+        }
+    }
+}

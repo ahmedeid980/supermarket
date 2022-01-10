@@ -1,0 +1,75 @@
+
+<div class="header">
+  <div class="title">
+    <img src="../assets/img/logo.svg">
+    <h1>Supermarket Project</h1>
+  </div>
+</div>
+<div class="container">
+  
+  <div class="content">
+    
+    <div class="supermarket-content-fields">
+      <form [formGroup]="formGroup">
+        <div class="row">
+          <div class="form-content-input col">
+            <span class="label">Arabic Name ( <span class="required">*</span> )</span>
+            <input type="text" class="form-control" placeholder="Name - AR" formControlName='aName' required>
+          </div>
+          <div class="form-content-input col">
+            <span class="label">English Name  ( <span class="required">*</span> )</span>
+            <input type="text" class="form-control" placeholder="Name - EN" formControlName='eName' required>
+          </div>
+        </div>
+
+        <div class="row row-clear">
+          <div class="form-content-input col">
+            <span class="label">Address</span>
+            <textarea class="form-control" placeholder="Address" formControlName='address'></textarea>
+          </div>
+          <div class="input-group mb-3 col">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="file03" #fileImage (change)="changePlayerImage($event)">
+              <label class="custom-file-label" for="file03"></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <button type="button" class="btn btn-success button" (click)='saveSupermarket()' *ngIf="!buttonStatus">
+            Save
+          </button>
+          <button type="button" class="btn btn-primary button" (click)='updateSupermarket()' *ngIf="buttonStatus" style="margin-left: 15px;">
+            update
+          </button>
+          <button type="button" class="btn btn-warning button" (click)='resetFields()' style="margin-left: 15px;">
+            reset
+          </button>
+        </div>
+
+      </form>
+    </div>
+    <hr class="line">
+    <div class="list-content">
+      <div class="card-supermarket" *ngFor="let supermarket of supermarketList">
+        <div class="fird">
+          <div class="img">
+            <img src="data:image/jpeg;base64,{{supermarket?.image}}">
+          </div>
+  
+          <div class="description"  style="margin-left: 10px;">
+            <div>
+              <h3 > {{ supermarket?.eName }} </h3> 
+               <h5 > <span style="color: rgb(94, 182, 255);">Address - </span> {{ supermarket?.address }}</h5>
+              </div>
+          </div>
+        </div>
+
+        <div class="operation">
+          <button type="button" class="btn btn-info " (click)="getElementForUpdate(supermarket)">update</button>
+          <button type="button" class="btn btn-danger " style="margin-left: 10px;" (click)="deleteSupermarket(supermarket)"> X </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
